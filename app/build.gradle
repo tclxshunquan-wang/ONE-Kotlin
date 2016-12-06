@@ -1,0 +1,85 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+
+
+File proFile = new File("$projectDir/sign.properties")
+def Properties props = new Properties()
+props.load(new FileInputStream(proFile))
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+    defaultConfig {
+        applicationId "com.jm"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        keystore {
+            keyAlias props['keyAlias']
+            keyPassword props['keyPassword']
+            storeFile file(props['storeFile'])
+            storePassword props['storePassword']
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "API_HOST", "\"${props['debug_host']}\"" //API Host
+            buildConfigField "boolean", "DEBUT_LOG", "true" //是否输出LOG信息
+            //url
+            minifyEnabled false
+            multiDexEnabled true
+            shrinkResources false
+            signingConfig signingConfigs.keystore
+        }
+        release {
+            buildConfigField "String", "API_HOST", "\"${props['debug_host']}\"" //API Host
+            buildConfigField "boolean", "DEBUT_LOG", "true" //是否输出LOG信息
+            minifyEnabled false
+            multiDexEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.keystore
+            shrinkResources false
+
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+afterEvaluate {
+    tasks.matching {
+        it.name.startsWith('dex')
+    }.each { dx ->
+        if (dx.additionalParameters == null) {
+            dx.additionalParameters = []
+        }
+        dx.additionalParameters += '--multi-dex' // enable multidex
+        // optional
+        dx.additionalParameters += "--main-dex-list=$projectDir/multidex.keep".toString() // enable the main-dex-list
+    }
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar', exclude: 'android-support-multidex.jar')
+    compile project(':jm_data')
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:recyclerview-v7:25.0.1'
+    compile 'com.android.support:cardview-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'org.jetbrains.anko:anko-sdk15:0.8.2'
+    compile 'org.jetbrains.anko:anko-support-v4:0.7.1'
+    compile 'com.facebook.fresco:fresco:0.14.1'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'com.yanzhenjie:recyclerview-swipe:1.0.2'
+
+}

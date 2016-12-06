@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.jm.activity.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true">
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/login_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入手机号"
+            android:textSize="12sp"
+            android:textColorHint="#444"
+            app:met_primaryColor="@color/main"
+            app:met_baseColor="#444"
+            app:met_floatingLabel="normal"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            >
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/login_yzm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="获取验证码"
+                android:textSize="12sp"
+                android:textColorHint="#444"
+                app:met_primaryColor="@color/main"
+                app:met_baseColor="#444"
+                app:met_floatingLabel="normal"
+                android:layout_toLeftOf="@+id/login_send"
+                android:layout_marginRight="10dp"
+                />
+
+            <TextView
+                android:id="@+id/login_send"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/a400"
+                android:textColor="#fff"
+                android:text="点击获取验证码"
+                android:textSize="12sp"
+                android:gravity="center"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            >
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="我已阅读，并同意《用户注册协议》"
+                android:textSize="12sp"
+                android:textColor="#1e88e5"
+                android:layout_marginLeft="5dp"
+                />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login_sub"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/a400"
+            android:layout_marginTop="15dp"
+            android:text="登     陆"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

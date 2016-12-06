@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/jm_im"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/im_bottom"
+        >
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/im_swip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/im_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/im_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/im_ecm"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        >
+        <ImageView
+            android:id="@+id/im_voice"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:background="@mipmap/im_voice"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:scaleType="fitXY"
+            />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/im_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/im_emj"
+            android:layout_toRightOf="@+id/im_voice"
+            android:layout_centerVertical="true"
+            app:met_primaryColor="@color/green_g500"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:hint="输入框"
+            android:textSize="14sp"
+            android:maxLines="5"
+            />
+
+        <ImageView
+            android:id="@+id/im_emj"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="5dp"
+            android:background="@mipmap/im_emj"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/im_more"
+            />
+        <ImageView
+            android:id="@+id/im_more"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/im_more"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/im_ecm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+    </RelativeLayout>
+
+</RelativeLayout>
