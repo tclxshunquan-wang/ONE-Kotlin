@@ -23,7 +23,7 @@ JetBrains，作为目前广受欢迎的Java IDE IntelliJ 的提供商，在 Apac
 ![](https://github.com/kenvies/ONE-Kotlin/blob/master/img/Screenshot_2016-12-06-11-37-54_com.jm.png)
 
 ### 看完效果图，你可以思考下这些功能用java去写，你会怎样去设计，又会敲多少行代码呢？
-### 用完kotlin你就会知道，原来代码可以这样写，一个原生ndroid项目代码原来可以如此`简洁`
+### 用完kotlin你就会知道，原来代码可以这样写，一个原生Android项目代码原来可以如此`简洁`
 ### 和我一起来打造最`简洁`的Android项目吧
 ### 项目集成了环信即时通讯功能，提供两个测试账号`账号A:111`,`账号B:222`[密码与帐号相同]
 #### 有什么不懂的可以找我，共同探讨 QQ群：581621024
