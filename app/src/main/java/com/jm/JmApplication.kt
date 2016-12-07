@@ -6,6 +6,8 @@ import com.hyphenate.chat.EMClient
 import com.hyphenate.chat.EMOptions
 import com.jm.application.BaseApplication
 import com.jm.data.utils.Constant
+import com.jm.data.utils.SPUtil
+import com.jm.data.utils.XLog
 import com.jm.data.utils.getAppName
 
 /**
@@ -15,6 +17,7 @@ class JmApplication : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
+
 
         //            LeakCanary.install(this);
         Constant.BASE_URL = BuildConfig.API_HOST
@@ -42,5 +45,21 @@ class JmApplication : BaseApplication() {
         EMClient.getInstance().setDebugMode(true)
 
     }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        XLog.v("JmApplication","onLowMemory")
+    }
+
+    override fun onTerminate() {
+        super.onTerminate()
+        XLog.v("JmApplication","onTerminate")
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        XLog.v("JmApplication","onTrimMemory")
+    }
+
 
 }

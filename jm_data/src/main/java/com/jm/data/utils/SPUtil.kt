@@ -16,8 +16,8 @@ class SPUtil {
         private val TAG = javaClass.simpleName
         const val USER_INFO_FILE = "UserInfo"
         const val BASE_PARAMS_FILE = "BASETags"
-        const val SHOP_TAGS_FILE = "SHOPTags"
         const val AUTH_TAGS_FILE = "AuthTags"
+        const val AUTH_FIRST_TAG = "FirstTag"
         const val INVIDAIL_STATISTICS_DATA = "Invidaildata"
 
         /**

@@ -127,9 +127,16 @@ fun Toast_Long(message: String, context: Context) {
 }
 
 fun getDeviceId(context: Context): String {
-//    val telephonyManager: TelephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-//    return telephonyManager.deviceId ?: ""
-    return "000000010000100101"
+
+    try {
+        val telephonyManager: TelephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        return telephonyManager.deviceId ?: ""
+    }catch (e:Exception){
+        Toast_Short("缺少必要的权限,软件将无法为您提供相应的服务～～",context)
+        XLog.e("Permission Exception","缺少必要的权限,软件将无法为您提供相应的服务～～")
+    }
+    return ""
+//    return "000000010000100101"
 }
 
 /**

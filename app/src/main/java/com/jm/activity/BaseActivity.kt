@@ -1,15 +1,18 @@
 package com.jm.activity
 
-import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
-import android.support.v7.app.AppCompatActivity
-import android.view.*
+import android.view.KeyEvent
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
 import android.widget.LinearLayout
-import com.jm.R
 import com.jm.data.utils.Toast_Short
+import com.jm.data.utils.XLog
+import com.jm.permission.AndroidPerActivity
+import com.jm.permission.AndroidPreCallback
 
-open class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AndroidPerActivity(),AndroidPreCallback {
+
     var mExitTime: Long? = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +57,20 @@ open class BaseActivity : AppCompatActivity() {
         return statusView
     }
 
-    override fun onDestroy() {
+    /**
+     * 动态申请权限回调
+     * @return
+     */
+    override fun requestPreSuccess(code: Int) {
+        XLog.v(javaClass.simpleName,"$code :申请权限成功")
+    }
+
+    override fun requestPreFaile(code: Int) {
+        XLog.v(javaClass.simpleName,"$code :申请权限失败")
+    }
+
+
+     override fun onDestroy() {
         super.onDestroy()
         finish()
     }
