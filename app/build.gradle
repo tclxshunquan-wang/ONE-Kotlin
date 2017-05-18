@@ -18,16 +18,6 @@ android {
         versionCode 1
         versionName "1.0"
     }
-
-    signingConfigs {
-        keystore {
-            keyAlias props['keyAlias']
-            keyPassword props['keyPassword']
-            storeFile file(props['storeFile'])
-            storePassword props['storePassword']
-        }
-    }
-
     buildTypes {
         debug {
             buildConfigField "String", "API_HOST", "\"${props['debug_host']}\"" //API Host
@@ -36,17 +26,6 @@ android {
             minifyEnabled false
             multiDexEnabled true
             shrinkResources false
-            signingConfig signingConfigs.keystore
-        }
-        release {
-            buildConfigField "String", "API_HOST", "\"${props['debug_host']}\"" //API Host
-            buildConfigField "boolean", "DEBUT_LOG", "true" //是否输出LOG信息
-            minifyEnabled false
-            multiDexEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.keystore
-            shrinkResources false
-
         }
     }
     sourceSets {
